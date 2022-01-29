@@ -1,6 +1,10 @@
+import { Container } from '../../components/Container'
 import { Text } from "../../components/Text";
 import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
+import { Card } from "../../components/Card";
+import { Header } from '../../components/Header';
+import { Pagination } from '@mui/material';
 
 export const Dashboard = () => {
   const [pokemon, setPokemon] = useState([])
@@ -24,17 +28,23 @@ export const Dashboard = () => {
   
   return (
     <>
-      <Text as="h1">Pokédex</Text>
-      <Text>Search for Pokémon by name or using the National Pokédex number</Text>
-      {
+      <Header>
+          <Text as="h1">Pokédex</Text>
+          <Text>Search for Pokémon by name or using the National Pokédex number</Text>
+      </Header>
+      
+      <Container>
+        {
           pokemon.length > 0 && pokemon.map((item) => (
-            <div key={item.id}>
-              {item.name}
-
+            <Card key={item.id}>
+              <Text>{item.name}</Text>
               <img src={item.sprites.front_default} alt={item.name} />
-            </div>
+            </Card>
           ))
-      }
+        }
+      </Container>
+
+      <Pagination count={56} variant="outlined" color="primary" />   
     </>
   )
 }
