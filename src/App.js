@@ -1,13 +1,16 @@
+import { Container } from './components/Container/index';
 import GlobalStyle from './styles/global';
 
 function App() {
   return (
-    <div>
-      <div className="App">
-        hello world
-      </div>
-      <GlobalStyle/>
-    </div>
+    <>
+      <Container>
+        <div className="App">
+          hello world
+        </div>
+        <GlobalStyle/>
+      </Container>
+    </>
   );
 }
 
