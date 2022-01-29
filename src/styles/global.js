@@ -7,8 +7,9 @@ export default createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
   }  
-  
+
   body {
     background: #ddd;
+    font-family: 'Roboto', sans-serif;
   }
 `;
