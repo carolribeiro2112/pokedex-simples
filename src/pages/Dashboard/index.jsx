@@ -9,8 +9,12 @@ export const Dashboard = () => {
   const [pokemon, setPokemon] = useState([])
   const [offset, setOffset] = useState(0)
 
-  function page () {
+  function pagePlus () {
     setOffset(offset+20)
+  }
+
+  function pageMinus () {
+    setOffset(offset-20)
   }
 
   useEffect(()=>{
@@ -48,7 +52,8 @@ export const Dashboard = () => {
         }
       </Container>   
 
-      <button onClick={page}>clique aqui</button>    
+      <button onClick={pagePlus}>+</button> 
+      <button onClick={pageMinus}>-</button>   
     </>
   )
 }
