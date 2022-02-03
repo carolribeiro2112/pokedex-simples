@@ -1,23 +1,24 @@
 import styled from "styled-components";
 
 export const bgType = {
-  grass: "#62b957",
-  fire: "#fd7d24",
-  water: "#4a90da",
   bug: "#8cb230",
-  normal: "#9da0aa",
-  poison: "#a552cc",
+  dark: "#58575F",
+  dragon: "#0f6ac0",
   electric: "#eed535",
-  ground: "#dd7748",
   fairy: "#ed6ec7",
   fighting: "#d04164",
+  fire: "#fd7d24",
   flying: "#748fc9",
-  rock: "#baab82",
-  ice: "#61cec0",
-  psychic: "#ea5d60",
-  dragon: "#0f6ac0",
   ghost: "#556aae",
+  grass: "#62b957",
+  ground: "#dd7748",
+  ice: "#61cec0",
+  normal: "#9da0aa",
+  poison: "#a552cc",
+  psychic: "#ea5d60",
+  rock: "#baab82",
   steel: "#417d9a",
+  water: "#4a90da",
 };
 
 export const TypeFlag = styled.div`
@@ -32,4 +33,6 @@ export const TypeFlag = styled.div`
   color: #fff;
   border-radius: 4px;
   margin-right: 10px;
+  padding: 5px;
+  box-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
 `;

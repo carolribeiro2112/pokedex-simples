@@ -51,7 +51,7 @@ export const Dashboard = () => {
           pokemon?.map((item) => (
             <Card key={item.id} props={item.types[0].type.name}>
               <div>
-                <PokeId>#{item.id}</PokeId>
+                <PokeId># {item.id}</PokeId>
                 <Text>{item.name}</Text>
                 <div className='flag-container'>
                   <Flag props={item.types[0].type.name}>{item.types[0].type.name}</Flag>
