@@ -15,7 +15,11 @@ export const Dashboard = () => {
   }
 
   function pageMinus () {
-    setOffset(offset-20)
+    if(offset <= 0){
+      setOffset(0)
+    } else {
+      setOffset(offset-20)
+    }
   }
 
   useEffect(()=>{
