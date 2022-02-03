@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
 import { Card } from "../../components/Card";
 import { Header } from '../../components/Header';
+import { ButtonsContainer } from './styles';
 
 export const Dashboard = () => {
   const [pokemon, setPokemon] = useState([])
@@ -29,16 +30,14 @@ export const Dashboard = () => {
 
       setPokemon(format)
     }
-
-
     getItems()
   },[offset])
   
   return (
     <>
       <Header>
-          <Text as="h1">Pokédex</Text>
-          <Text>Search for Pokémon by name or using the National Pokédex number</Text>
+        <Text as="h1">Pokédex</Text>
+        <Text>Search for Pokémon by name or using the National Pokédex number</Text>
       </Header>
       
       <Container>
@@ -52,8 +51,10 @@ export const Dashboard = () => {
         }
       </Container>   
 
-      <button onClick={pagePlus}>+</button> 
-      <button onClick={pageMinus}>-</button>   
+      <ButtonsContainer>
+        <button onClick={pageMinus}>-</button> 
+        <button onClick={pagePlus}>+</button> 
+      </ButtonsContainer>
     </>
   )
 }
