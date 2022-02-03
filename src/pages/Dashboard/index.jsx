@@ -5,6 +5,8 @@ import { api } from "../../services/api";
 import { Card } from "../../components/Card";
 import { Header } from '../../components/Header';
 import { ButtonsContainer } from './styles';
+import { PokeId } from '../../components/PokeId';
+import { Flag } from '../../components/Flag';
 
 export const Dashboard = () => {
   const [pokemon, setPokemon] = useState([])
@@ -47,8 +49,17 @@ export const Dashboard = () => {
       <Container>
         {
           pokemon?.map((item) => (
-            <Card key={item.id}>
-              <Text>{item.name}</Text>
+            <Card key={item.id} props={item.types[0].type.name}>
+              <div>
+                <PokeId>#{item.id}</PokeId>
+                <Text>{item.name}</Text>
+                <div className='flag-container'>
+                  <Flag props={item.types[0].type.name}>{item.types[0].type.name}</Flag>
+                  {
+                    item.types[1]?.type && <Flag props={item.types[1].type.name}>{item.types[1].type.name}</Flag>
+                  }
+                </div>
+              </div>
               <img src={item.sprites.front_default} alt={item.name} />
             </Card>
           ))
