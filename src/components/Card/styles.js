@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import pokeballImg from "../../assets/watermark-pokeball.svg";
 
 export const bgType = {
   bug: "#8bd674",
@@ -23,6 +24,7 @@ export const bgType = {
 };
 
 export const Container = styled.div`
+  background: url(${pokeballImg}) right center no-repeat;
   background-color: ${({props}) => bgType[props]|| bgType.rock };
   height: 130px;
   padding: 15px;
