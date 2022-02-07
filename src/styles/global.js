@@ -9,7 +9,7 @@ export default createGlobalStyle`
   }  
 
   body {
-    background: #ddd;
+    background: #FFF;
     font-family: 'Roboto', sans-serif;
   }
 `;

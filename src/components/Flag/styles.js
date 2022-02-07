@@ -22,7 +22,7 @@ export const bgType = {
 };
 
 export const TypeFlag = styled.div`
-  width: 80px;
+  width: 85px;
   display: flex;
   align-items: center;
   justify-content: center;
