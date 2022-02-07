@@ -8,31 +8,24 @@ import { ButtonsContainer } from './styles';
 import { PokeId } from '../../components/PokeId';
 import { Flag } from '../../components/Flag';
 import { PokemonType } from '../../components/PokeTypes';
+import AppPagination from '../../components/AppPagination';
 
+const LIMIT = 20;
 
 export const Dashboard = () => {
   const [pokemon, setPokemon] = useState([])
+  const [totalPoke, setTotalPoke] = useState(0)
   const [offset, setOffset] = useState(0)
-
-  function pagePlus () {
-    setOffset(offset+20)
-  }
-
-  function pageMinus () {
-    if(offset <= 0){
-      setOffset(0)
-    } else {
-      setOffset(offset-20)
-    }
-  }
 
   useEffect(()=>{
     async function getItems() {
-      const {data} = await api.get(`/pokemon/?offset=${offset}&limit=20`)
+      const {data} = await api.get(`/pokemon/?offset=${offset}&${LIMIT}`)
 
       const res = await Promise.all(data.results.map((item )=> 
         api.get(item.url)
       ))
+
+      setTotalPoke(data.count)
 
       const format = res.map((req) => req.data)
 
@@ -40,6 +33,8 @@ export const Dashboard = () => {
     }
     getItems()
   },[offset])
+
+  
   
   return (
     <>
@@ -76,8 +71,7 @@ export const Dashboard = () => {
       </Container>   
 
       <ButtonsContainer>
-        <button onClick={pageMinus}>-</button> 
-        <button onClick={pagePlus}>+</button> 
+        <AppPagination limit={LIMIT} offset={offset} setOffset={setOffset} total={totalPoke}/> 
       </ButtonsContainer>
     </>
   )

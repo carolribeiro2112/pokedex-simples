@@ -15,8 +15,8 @@ export const ButtonsContainer = styled.div`
     border: none;
     cursor: pointer;
     font-size: 20px;
-    background-color: #159ED6;
-    color: #FFF;
+    background-color: #E2E2E2;
+    color: black;
   }
 
   button:hover {

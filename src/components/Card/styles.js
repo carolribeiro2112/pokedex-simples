@@ -34,6 +34,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  transition: background-color 0.2s;
+
   div {
     h2 {
       font-size: 30px;
@@ -57,5 +59,10 @@ export const Container = styled.div`
 
   img {
     margin-left: 10px;
+  }
+
+  :hover {
+    cursor: pointer;
+    filter: opacity(0.8);
   }
 `;

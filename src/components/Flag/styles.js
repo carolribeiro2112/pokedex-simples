@@ -22,7 +22,7 @@ export const bgType = {
 };
 
 export const TypeFlag = styled.div`
-  width: 85px;
+  width: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,8 +32,8 @@ export const TypeFlag = styled.div`
   color: #fff;
   border-radius: 4px;
   margin-right: 10px;
-  padding: 5px;
-  box-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
+  padding: 8px;
+  box-shadow: 1px 1px 2px rgba(150, 150, 150, 0.4);
   img {
     margin-right: 5px;
     margin-left: 0;
