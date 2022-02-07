@@ -22,17 +22,22 @@ export const bgType = {
 };
 
 export const TypeFlag = styled.div`
-  width: 60px;
+  width: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   font-size: 16px;
-  background-color: ${({props}) => bgType[props]|| bgType.rock 
-  };
+  background-color: ${({props}) => bgType[props]|| bgType.rock};
   color: #fff;
   border-radius: 4px;
   margin-right: 10px;
   padding: 5px;
   box-shadow: 1px 1px 2px rgba(150, 150, 150, 0.5);
+  img {
+    margin-right: 5px;
+    margin-left: 0;
+    width: 20px;
+    height: 20px;
+  }
 `;

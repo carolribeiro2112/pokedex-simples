@@ -7,6 +7,8 @@ import { Header } from '../../components/Header';
 import { ButtonsContainer } from './styles';
 import { PokeId } from '../../components/PokeId';
 import { Flag } from '../../components/Flag';
+import { PokemonType } from '../../components/PokeTypes';
+
 
 export const Dashboard = () => {
   const [pokemon, setPokemon] = useState([])
@@ -54,9 +56,16 @@ export const Dashboard = () => {
                 <PokeId># {item.id}</PokeId>
                 <Text>{item.name}</Text>
                 <div className='flag-container'>
-                  <Flag props={item.types[0].type.name}>{item.types[0].type.name}</Flag>
+                  <Flag props={item.types[0].type.name}>
+                    <PokemonType type={item.types[0].type.name}/>
+                    {item.types[0].type.name}
+                  </Flag>
                   {
-                    item.types[1]?.type && <Flag props={item.types[1].type.name}>{item.types[1].type.name}</Flag>
+                    item.types[1]?.type && 
+                      <Flag props={item.types[1].type.name}>
+                        <PokemonType type={item.types[1].type.name}/>
+                        {item.types[1].type.name}
+                      </Flag>
                   }
                 </div>
               </div>
