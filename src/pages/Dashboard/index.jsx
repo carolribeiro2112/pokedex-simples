@@ -9,6 +9,7 @@ import { PokeId } from '../../components/PokeId';
 import { Flag } from '../../components/Flag';
 import { PokemonType } from '../../components/PokeTypes';
 import AppPagination from '../../components/AppPagination';
+import { PokeModal } from '../../components/PokeModal';
 
 const LIMIT = 20;
 
@@ -16,6 +17,7 @@ export const Dashboard = () => {
   const [pokemon, setPokemon] = useState([])
   const [totalPoke, setTotalPoke] = useState(0)
   const [offset, setOffset] = useState(0)
+  const [isPokeModalOpen, setIsPokeModalOpen] = useState(null)
 
   useEffect(()=>{
     async function getItems() {
@@ -46,7 +48,7 @@ export const Dashboard = () => {
       <Container>
         {
           pokemon?.map((item) => (
-            <Card key={item.id} props={item.types[0].type.name}>
+            <Card id="#card" key={item.id} props={item.types[0].type.name} onClickModal={()=> setIsPokeModalOpen(item.id)}>
               <div>
                 <PokeId># {item.id}</PokeId>
                 <Text>{item.name}</Text>
@@ -69,6 +71,8 @@ export const Dashboard = () => {
           ))
         }
       </Container>   
+
+        <PokeModal isOpen={Boolean(isPokeModalOpen)} onCloseModal={() => setIsPokeModalOpen(null)}/>
 
       <ButtonsContainer>
         <AppPagination limit={LIMIT} offset={offset} setOffset={setOffset} total={totalPoke}/> 
