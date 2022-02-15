@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import pokeballImg from '../../assets/Pokeball.svg';
 
 export const bgType = {
   bug: "#8bd674",
@@ -65,4 +66,55 @@ export const PokemonInfo = styled.div`
 
   display: flex;
   justify-content: center;
+
+  > div {
+    margin: 50px auto;
+
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #fff;
+      text-transform: capitalize;
+      max-width: 180px;
+    }
+
+    .imagem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url(${pokeballImg}) center no-repeat;
+      margin-bottom: 45px;
+    }
+
+    .ability-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+`;
+
+export const PokemonStats = styled.div`
+  width: 300px;
+  height: 500px;
+  border-radius: 30px 0 0 30px;
+
+  display: flex;
+  justify-content: center;
+
+  > div {
+    margin: 70px auto;
+
+    h2 {
+      color: ${({props}) => bgType[props]|| bgType.rock };
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
 `;

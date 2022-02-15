@@ -1,6 +1,8 @@
-import { Overlay, PokemonInfo} from './styles';
+import { Abilities } from '../Abilities';
+import { Text } from '../Text'
+import { Overlay, PokemonInfo, PokemonStats } from './styles';
 
-export const PokeModal = ({isOpen, onCloseModal, pokemonDetails, props}) => {
+export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
   if (!isOpen) {
     return null
   }
@@ -11,23 +13,30 @@ export const PokeModal = ({isOpen, onCloseModal, pokemonDetails, props}) => {
         <button onClick={onCloseModal} type="button">X</button>
         <PokemonInfo props={pokemonDetails.types[0].type.name}>
           <div>
-            <p>{pokemonDetails.name}</p>
-            <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
-            {
-              pokemonDetails.abilities?.map((item) => (
-                <p>{item.ability.name}</p>
-              ))
-            }  
+            <Text>{pokemonDetails.name}</Text>
+            <div className='imagem'>
+              <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
+            </div>
+            <div className='ability-info'> 
+              {
+                pokemonDetails.abilities?.map((item) => (
+                  <Abilities props={pokemonDetails.types[0].type.name} >{item.ability.name}</Abilities>
+                ))
+              }  
+            </div>
           </div>
         </PokemonInfo>
 
-        <div>
-          {
-            pokemonDetails.stats?.map((item) => (
-              <p>{item.stat.name}: {item.base_stat}</p>
-            ))
-          }
-        </div>
+        <PokemonStats>
+          <div>
+            <Text props={pokemonDetails.types[0].type.name}>Base Stats</Text>
+            {
+              pokemonDetails.stats?.map((item) => (
+                <p>{item.stat.name}: {item.base_stat}</p>
+              ))
+            }
+          </div>
+        </PokemonStats>
       </div>  
     </Overlay>
   )
