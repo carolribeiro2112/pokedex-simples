@@ -10,7 +10,7 @@ export const Overlay = styled.div`
   right: 0;
   bottom: 0;
 
-  >div {
+  .modal {
     width: 600px;
     height: 500px;
     background-color: #FFF;

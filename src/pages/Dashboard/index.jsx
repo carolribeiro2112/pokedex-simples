@@ -10,33 +10,30 @@ import { Flag } from '../../components/Flag';
 import { PokemonType } from '../../components/PokeTypes';
 import AppPagination from '../../components/AppPagination';
 import { PokeModal } from '../../components/PokeModal';
+import { getItems } from '../../services/getAllPokemons';
 
 const LIMIT = 20;
 
 export const Dashboard = () => {
-  const [pokemon, setPokemon] = useState([])
+  const [pokemons, setPokemons] = useState([])
   const [totalPoke, setTotalPoke] = useState(0)
   const [offset, setOffset] = useState(0)
   const [isPokeModalOpen, setIsPokeModalOpen] = useState(null)
+  const [pokemonDetails, setPokemonDetails] = useState({})
+  
 
   useEffect(()=>{
-    async function getItems() {
-      const {data} = await api.get(`/pokemon/?offset=${offset}&${LIMIT}`)
-
-      const res = await Promise.all(data.results.map((item )=> 
-        api.get(item.url)
-      ))
-
-      setTotalPoke(data.count)
-
-      const format = res.map((req) => req.data)
-
-      setPokemon(format)
-    }
-    getItems()
+    (async ()=>{
+      const {count, format} = await getItems(offset)
+      setPokemons(format)
+      setTotalPoke(count)
+    })()
   },[offset])
 
-  
+  function handleOnClick (pokemon) {
+    setIsPokeModalOpen(pokemon.id)
+    setPokemonDetails(pokemon)
+  }
   
   return (
     <>
@@ -47,8 +44,8 @@ export const Dashboard = () => {
       
       <Container>
         {
-          pokemon?.map((item) => (
-            <Card id="#card" key={item.id} props={item.types[0].type.name} onClickModal={()=> setIsPokeModalOpen(item.id)}>
+          pokemons?.map((item) => (
+            <Card id="#card" key={item.id} props={item.types[0].type.name} onClickModal={()=> handleOnClick(item)}>
               <div>
                 <PokeId># {item.id}</PokeId>
                 <Text>{item.name}</Text>
@@ -72,7 +69,7 @@ export const Dashboard = () => {
         }
       </Container>   
 
-        <PokeModal isOpen={Boolean(isPokeModalOpen)} onCloseModal={() => setIsPokeModalOpen(null)}/>
+        <PokeModal isOpen={Boolean(isPokeModalOpen)} onCloseModal={() => setIsPokeModalOpen(null)} pokemonDetails={pokemonDetails}/>
 
       <ButtonsContainer>
         <AppPagination limit={LIMIT} offset={offset} setOffset={setOffset} total={totalPoke}/> 
