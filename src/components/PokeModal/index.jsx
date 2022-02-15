@@ -1,6 +1,6 @@
-import { Overlay } from './styles';
+import { Overlay, PokemonInfo} from './styles';
 
-export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
+export const PokeModal = ({isOpen, onCloseModal, pokemonDetails, props}) => {
   if (!isOpen) {
     return null
   }
@@ -8,11 +8,27 @@ export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
   return (
     <Overlay pokemonDetails={pokemonDetails}>
       <div className='modal'>
-        <button onClick={onCloseModal} type="button"> close </button>
-        <p>{pokemonDetails.name}</p>
-        <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
-        <p>{pokemonDetails.abilities[0].ability.name}</p>
-      </div>
+        <button onClick={onCloseModal} type="button">X</button>
+        <PokemonInfo props={pokemonDetails.types[0].type.name}>
+          <div>
+            <p>{pokemonDetails.name}</p>
+            <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
+            {
+              pokemonDetails.abilities?.map((item) => (
+                <p>{item.ability.name}</p>
+              ))
+            }  
+          </div>
+        </PokemonInfo>
+
+        <div>
+          {
+            pokemonDetails.stats?.map((item) => (
+              <p>{item.stat.name}: {item.base_stat}</p>
+            ))
+          }
+        </div>
+      </div>  
     </Overlay>
   )
 }
