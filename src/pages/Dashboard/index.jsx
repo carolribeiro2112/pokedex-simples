@@ -44,26 +44,23 @@ export const Dashboard = () => {
       
       <Container>
         {
-          pokemons?.map((item) => (
-            <Card id="#card" key={item.id} props={item.types[0].type.name} onClickModal={()=> handleOnClick(item)}>
+          pokemons?.map((pokemon) => (
+            <Card id="#card" key={pokemon.id} props={pokemon.types[0].type.name} onClickModal={()=> handleOnClick(pokemon)}>
               <div>
-                <PokeId># {item.id}</PokeId>
-                <Text>{item.name}</Text>
+                <PokeId># {pokemon.id}</PokeId>
+                <Text>{pokemon.name}</Text>
                 <div className='flag-container'>
-                  <Flag props={item.types[0].type.name}>
-                    <PokemonType type={item.types[0].type.name}/>
-                    {item.types[0].type.name}
-                  </Flag>
                   {
-                    item.types[1]?.type && 
-                      <Flag props={item.types[1].type.name}>
-                        <PokemonType type={item.types[1].type.name}/>
-                        {item.types[1].type.name}
+                    pokemon.types?.map((item) => (
+                      <Flag props={item.type.name}>
+                        <PokemonType type={item.type.name}/>
+                        {item.type.name}
                       </Flag>
+                    ))
                   }
                 </div>
               </div>
-              <img src={item.sprites.front_default} alt={item.name} />
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             </Card>
           ))
         }

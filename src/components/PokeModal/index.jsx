@@ -29,7 +29,7 @@ export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
 
         <PokemonStats>
           <div>
-            <Text props={pokemonDetails.types[0].type.name}>Base Stats</Text>
+            <Text>Base Stats</Text>
             {
               pokemonDetails.stats?.map((item) => (
                 <p>{item.stat.name}: {item.base_stat}</p>

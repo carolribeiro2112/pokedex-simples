@@ -1,8 +1,8 @@
 import { Title } from './styles'
 
-export const Text = ({children, as, props}) => {
+export const Text = ({children, as}) => {
   return (
-    <Title as={as} props={props}>
+    <Title as={as}>
       {children}
     </Title>
   )

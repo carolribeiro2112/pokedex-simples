@@ -108,10 +108,6 @@ export const PokemonStats = styled.div`
   > div {
     margin: 70px auto;
 
-    h2 {
-      color: ${({props}) => bgType[props]|| bgType.rock };
-    }
-
     p {
       margin-bottom: 10px;
     }
