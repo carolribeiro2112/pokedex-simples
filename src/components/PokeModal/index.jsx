@@ -1,4 +1,5 @@
 import { Abilities } from '../Abilities';
+import { Bar } from '../Bar';
 import { Text } from '../Text'
 import { Overlay, PokemonInfo, PokemonStats } from './styles';
 
@@ -18,6 +19,7 @@ export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
               <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
             </div>
             <div className='ability-info'> 
+                <h3>Abilities</h3>
               {
                 pokemonDetails.abilities?.map((item) => (
                   <Abilities props={pokemonDetails.types[0].type.name} >{item.ability.name}</Abilities>
@@ -32,9 +34,13 @@ export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
             <Text>Base Stats</Text>
             {
               pokemonDetails.stats?.map((item) => (
-                <p>{item.stat.name}: {item.base_stat}</p>
+                <>
+                  <p>{item.stat.name}: {item.base_stat}</p>
+                  <Bar stat={item.base_stat}/>
+                </>  
               ))
             }
+            
           </div>
         </PokemonStats>
       </div>  

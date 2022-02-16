@@ -23,7 +23,7 @@ export const bgType = {
 
 export const AbilityFlag = styled.div`
   width: 140px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   font-size: 16px;
   background-color: ${({props}) => bgType[props]|| bgType.rock};

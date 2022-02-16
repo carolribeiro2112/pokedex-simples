@@ -36,7 +36,7 @@ export const Overlay = styled.div`
   .modal {
     display: flex;
     position: relative;
-    width: 600px;
+    width: 700px;
     height: 500px;
     background-color: #FFF;
     margin: 150px auto;
@@ -54,12 +54,18 @@ export const Overlay = styled.div`
       right: 20px;
       border-radius: 50%;
       cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
     }
+
+
   }
 `;
 
 export const PokemonInfo = styled.div`
-  width: 300px;
+  width: 350px;
   height: 500px;
   background-color: ${({props}) => bgType[props]|| bgType.rock };
   border-radius: 30px 0 0 30px;
@@ -85,10 +91,18 @@ export const PokemonInfo = styled.div`
       align-items: center;
       justify-content: center;
       background: url(${pokeballImg}) center no-repeat;
-      margin-bottom: 45px;
+      margin-bottom: 30px;
     }
 
     .ability-info {
+      h3 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -98,7 +112,7 @@ export const PokemonInfo = styled.div`
 `;
 
 export const PokemonStats = styled.div`
-  width: 300px;
+  width: 350px;
   height: 500px;
   border-radius: 30px 0 0 30px;
 
@@ -106,10 +120,18 @@ export const PokemonStats = styled.div`
   justify-content: center;
 
   > div {
-    margin: 70px auto;
+    margin: 50px auto;
+
+    h2 {
+      color: #62b957;
+      margin-bottom: 40px;
+    }
 
     p {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      margin-top: 15px;
+      color: #747476;
+      text-transform: capitalize;
     }
   }
 
