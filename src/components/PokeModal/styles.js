@@ -24,6 +24,7 @@ export const bgType = {
 };
 
 export const Overlay = styled.div`
+  z-index: 10;
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.5);
