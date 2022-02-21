@@ -1,6 +1,6 @@
 import { Container } from "../../components/Container";
 import { Text } from "../../components/Text";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "../../components/Input";
 import { Card } from "../../components/Card";
 import { Header } from "../../components/Header";
