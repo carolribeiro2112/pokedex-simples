@@ -22,7 +22,7 @@ export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
                 <h3>Abilities</h3>
               {
                 pokemonDetails.abilities?.map((item) => (
-                  <Abilities props={pokemonDetails.types[0].type.name} >{item.ability.name}</Abilities>
+                  <Abilities props={pokemonDetails.types[0].type.name} key={item.ability.name} >{item.ability.name}</Abilities>
                 ))
               }  
             </div>
