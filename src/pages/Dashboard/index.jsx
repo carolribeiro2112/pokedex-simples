@@ -37,13 +37,13 @@ export const Dashboard = () => {
   }
 
   async function search (text = "") {
-    try {
+    // try {
       const {data} = await api
         .get(`/pokemon/${text.trim()}/`)
           return [data]
-    } catch {
-      setTimeout(()=>{alert('pokemon does not exists'), 1000})
-    }
+    // } catch {
+    //   setTimeout(()=>{alert('pokemon does not exists'), 6000})
+    // }
   }
 
   const debouncedSearch = debounce(async (text="") => {
