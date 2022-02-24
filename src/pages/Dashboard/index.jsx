@@ -12,7 +12,7 @@ import AppPagination from "../../components/AppPagination";
 import { PokeModal } from "../../components/PokeModal";
 import { getItems } from "../../services/getAllPokemons";
 import { api } from "../../services/api";
-import debounce  from "lodash/debounce";
+import debounce from "lodash/debounce";
 
 const LIMIT = 20;
 
@@ -23,12 +23,18 @@ export const Dashboard = () => {
   const [isPokeModalOpen, setIsPokeModalOpen] = useState(null);
   const [pokemonDetails, setPokemonDetails] = useState({});
 
+  function handleClear() {
+    getAllPokemons();
+  }
+
+  async function getAllPokemons() {
+    const { count, format } = await getItems(offset);
+    setPokemons(format);
+    setTotalPoke(count);
+  }
+
   useEffect(() => {
-    (async () => {
-      const { count, format } = await getItems(offset);
-      setPokemons(format);
-      setTotalPoke(count);
-    })();
+    getAllPokemons();
   }, [offset]);
 
   function handleOnClick(pokemon) {
@@ -36,21 +42,27 @@ export const Dashboard = () => {
     setPokemonDetails(pokemon);
   }
 
-  async function search (text = "") {
-    // try {
-      const {data} = await api
-        .get(`/pokemon/${text.trim()}/`)
-          return [data]
-    // } catch {
-    //   setTimeout(()=>{alert('pokemon does not exists'), 6000})
-    // }
+  async function search(text = "") {
+    try {
+      const { data } = await api.get(`/pokemon/${text.trim()}/`);
+
+      return [data];
+    } catch (err) {
+      if (err.response.status) {
+        setTimeout(() => {
+          alert("pokemon not found");
+        }, 1000);
+      }
+    }
   }
 
-  const debouncedSearch = debounce(async (text="") => {
+  const debouncedSearch = debounce(async (text = "") => {
     setPokemons(await search(text));
   }, 300);
 
-  const handleOnChange = (text) => {debouncedSearch(text)}
+  const handleOnChange = (text) => {
+    debouncedSearch(text);
+  };
 
   return (
     <>
@@ -62,7 +74,7 @@ export const Dashboard = () => {
           </Text>
         </div>
         <div className="input">
-          <Input value={""} onChange={handleOnChange} />
+          <Input value={""} onChange={handleOnChange} onClear={handleClear} />
         </div>
       </Header>
 
