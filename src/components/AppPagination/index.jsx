@@ -1,6 +1,6 @@
 import { Pagination } from './styles';
  
-const MAX_ITEMS = 9;
+const MAX_ITEMS = 5;
 const MAX_LEFT = (MAX_ITEMS - 1) / 2;
 
 export default function AppPagination({limit, total, offset, setOffset}) {

@@ -7,4 +7,11 @@ export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 5px 10px;
+
+  @media (max-width: 1024px) {
+    max-width: 650px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px 10px;
+  }
 `;

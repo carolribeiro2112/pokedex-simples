@@ -4,7 +4,7 @@ export const ButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 400px;
+  max-width: 600px;
   margin: 20px auto;
 
   button {
@@ -22,5 +22,4 @@ export const ButtonsContainer = styled.div`
   button:hover {
     filter: opacity(80%);
   }
-
 `;

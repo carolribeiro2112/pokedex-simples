@@ -9,6 +9,7 @@ export const InputContainer = styled.div`
   border-radius: 4px;
 
   input {
+    margin-left: 5px;
     border: none;
   }
 

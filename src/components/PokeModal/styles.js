@@ -60,9 +60,13 @@ export const Overlay = styled.div`
         opacity: 0.7;
       }
     }
-
-
   }
+  @media(max-width: 1024px) {
+      .modal {
+        width: 500px;
+        height: 500px;
+      }
+    }
 `;
 
 export const PokemonInfo = styled.div`
@@ -110,6 +114,10 @@ export const PokemonInfo = styled.div`
       justify-content: center;
     }
   }
+
+  @media(max-width: 1024px) {
+    width: 250px;
+  }
 `;
 
 export const PokemonStats = styled.div`
@@ -136,4 +144,7 @@ export const PokemonStats = styled.div`
     }
   }
 
+  @media(max-width: 1024px) {
+    width: 250px;
+  }
 `;

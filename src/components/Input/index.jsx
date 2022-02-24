@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { InputContainer } from './styles';
+import { FiSearch } from 'react-icons/fi';
 
 export const Input = ({value, onChange, onClear}) => {
   const [text, setText] = useState(value || "");
@@ -16,6 +17,7 @@ export const Input = ({value, onChange, onClear}) => {
 
   return (
     <InputContainer>
+      <FiSearch size={15}/>
       <input value={text} onChange={handleChange} placeholder="Search"/>
       {
         text && (

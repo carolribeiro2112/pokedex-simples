@@ -23,5 +23,4 @@ export const Pagination = styled.ul`
   .pagination__item--active:focus {
     outline: 1px solid #171717;
   }
-
 `;
