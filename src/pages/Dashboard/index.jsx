@@ -13,6 +13,7 @@ import { PokeModal } from "../../components/PokeModal";
 import { getItems } from "../../services/getAllPokemons";
 import { api } from "../../services/api";
 import debounce from "lodash/debounce";
+import toast, {Toaster} from 'react-hot-toast'
 
 const LIMIT = 20;
 
@@ -50,7 +51,7 @@ export const Dashboard = () => {
     } catch (err) {
       if (err.response.status) {
         setTimeout(() => {
-          alert("pokemon not found");
+          toast.error("pokemon not found");
         }, 1000);
       }
     }
@@ -102,7 +103,8 @@ export const Dashboard = () => {
           </Card>
         ))}
       </Container>
-
+      
+      <Toaster/>
       <PokeModal
         isOpen={Boolean(isPokeModalOpen)}
         onCloseModal={() => setIsPokeModalOpen(null)}
