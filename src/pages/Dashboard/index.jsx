@@ -53,6 +53,7 @@ export const Dashboard = () => {
         setTimeout(() => {
           toast.error("pokemon not found");
         }, 1000);
+        getAllPokemons()
       }
     }
   }
