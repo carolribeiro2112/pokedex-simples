@@ -49,11 +49,12 @@ export const Dashboard = () => {
 
       return [data];
     } catch (err) {
-      if (err.response.status) {
+      if (err.response.status === 404) {
         setTimeout(() => {
           toast.error("pokemon not found");
         }, 1000);
-        getAllPokemons()
+
+        return pokemons
       }
     }
   }
