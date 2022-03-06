@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   }
 
   .input {
-    margin: 30px auto;
+    margin: 50px auto 30px;
 
     input {
       width: 200px;

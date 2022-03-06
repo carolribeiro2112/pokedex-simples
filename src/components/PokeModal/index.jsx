@@ -2,6 +2,7 @@ import { Abilities } from '../Abilities';
 import { Bar } from '../Bar';
 import { Text } from '../Text'
 import { Overlay, PokemonInfo, PokemonStats } from './styles';
+import { IoIosClose } from 'react-icons/io';
 
 export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
   if (!isOpen) {
@@ -11,7 +12,7 @@ export const PokeModal = ({isOpen, onCloseModal, pokemonDetails}) => {
   return (
     <Overlay pokemonDetails={pokemonDetails}>
       <div className='modal'>
-        <button onClick={onCloseModal} type="button">X</button>
+        <button onClick={onCloseModal} type="button"><IoIosClose size={25}/></button>
         <PokemonInfo props={pokemonDetails.types[0].type.name}>
           <div>
             <Text>{pokemonDetails.name}</Text>

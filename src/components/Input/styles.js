@@ -14,9 +14,11 @@ export const InputContainer = styled.div`
   }
 
   button {
+    margin-top: 2px;
     width: 20px;
     border: none;
     background-color: transparent;
+    cursor: pointer;
   }
 
 `;

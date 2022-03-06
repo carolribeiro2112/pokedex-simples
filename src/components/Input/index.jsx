@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { InputContainer } from './styles';
 import { FiSearch } from 'react-icons/fi';
+import { IoIosClose } from 'react-icons/io';
 
 export const Input = ({value, onChange, onClear}) => {
   const [text, setText] = useState(value || "");
@@ -21,7 +22,7 @@ export const Input = ({value, onChange, onClear}) => {
       <input value={text} onChange={handleChange} placeholder="Search"/>
       {
         text && (
-          <button onClick={handleOnClick}>X</button>
+          <button onClick={handleOnClick}><IoIosClose size={20}/></button>
         )
       }
     </InputContainer>
